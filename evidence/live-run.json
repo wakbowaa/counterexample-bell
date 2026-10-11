@@ -1,0 +1,40 @@
+{
+  "bellId": "LIVE-BELL-1791752097",
+  "contract": "0x8A076bE666aF7ABf1502B7a4D2E8D155F7699068",
+  "transactions": {
+    "ring": "0x1961c94324a512d7200312cc5d3fac80789e6fd177858f13c06be55c351a2b3c",
+    "challenge": "0x796d75dd0712e65682c93147de4efff9382f47c2d3dcfb808824dc6d00af0ac5"
+  },
+  "final": {
+    "challenges": [
+      {
+        "argument": "This named occupied-hours observation satisfies both frozen domain rules and directly contradicts the universal unlocked-exit claim.",
+        "challenger": "0xc8e8f5B7d61Da6eD160f474592627D65728b516e",
+        "contradicts": true,
+        "digest": "4787f537ddfd103473231497a26f090620932f82cfc235cd553a2923a7f0bd24",
+        "domain_matches": [
+          true,
+          true
+        ],
+        "index": 0,
+        "scenario": "At 14:00 while visitors occupied the public library, the designated east emergency exit was locked and could not be opened from inside.",
+        "verdict": "VALID_COUNTEREXAMPLE"
+      }
+    ],
+    "claim": "Every designated emergency exit remains unlocked whenever the public library is occupied.",
+    "deadline": 1791755699,
+    "domain_rules": [
+      "The scenario occurs while the public library is occupied.",
+      "The scenario identifies the state of a designated emergency exit."
+    ],
+    "id": "LIVE-BELL-1791752097",
+    "max_challenges": 4,
+    "opened_at": 1791752099,
+    "owner": "0xad9c2fEc8a74efa02364A780BAd1936e255C3C25",
+    "sequence": 0,
+    "state": "BROKEN",
+    "title": "Occupied library exit rule",
+    "winning_index": 0
+  },
+  "disclosure": "The scenario is an explicit demonstration case submitted from the second configured wallet."
+}

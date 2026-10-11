@@ -1,0 +1,8 @@
+{
+  "network": "StudioNet",
+  "contractAddress": "0x8A076bE666aF7ABf1502B7a4D2E8D155F7699068",
+  "deploymentTransaction": "0xc7f006f1f6267f94a759e111f8bdb250ca6d22a7c75d264b3eaf1ced32c9f5cc",
+  "sourceSha256": "592c0e8c9625b973511816e786b8b49fdb7ec25cef8a5bdf886ab1617b4239d6",
+  "sourceCommit": "95b83a00edb8ca610b6638597c41f48a420a5684",
+  "repository": "https://github.com/wakbowaa/counterexample-bell"
+}
