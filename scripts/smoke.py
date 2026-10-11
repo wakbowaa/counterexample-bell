@@ -1,4 +1,5 @@
 import json
+import os
 import re
 import time
 from pathlib import Path
@@ -21,22 +22,28 @@ def calldata_compat(method=None, args=None, kwargs=None):
 
 contract_actions.make_calldata_object = calldata_compat
 ROOT = Path(__file__).parents[1]
-ENV = (ROOT.parents[3] / "accounts.env").read_text(encoding="utf-8")
+ENV_PATH = ROOT.parents[3] / "accounts.env"
+ENV = ENV_PATH.read_text(encoding="utf-8") if ENV_PATH.exists() else ""
 
 
-def key(account_number):
+def key(account_number, environment_name):
+    supplied = os.environ.get(environment_name, "").strip()
+    if supplied:
+        return supplied
     match = re.search(
         rf'^ACCOUNT_{account_number}_GENLAYER_PRIVATE_KEY\s*=\s*"?([^"\r\n]+)',
         ENV,
         re.M,
     )
     if match is None:
-        raise RuntimeError(f"Account {account_number} key not found")
+        raise RuntimeError(
+            f"Set {environment_name}; workspace fallback account {account_number} was not found"
+        )
     return match.group(1).strip()
 
 
-owner = create_account(account_private_key=key(6))
-challenger = create_account(account_private_key=key(7))
+owner = create_account(account_private_key=key(6, "OWNER_PRIVATE_KEY"))
+challenger = create_account(account_private_key=key(7, "CHALLENGER_PRIVATE_KEY"))
 owner_client = create_client(chain=studionet, account=owner)
 challenger_client = create_client(chain=studionet, account=challenger)
 address = json.loads((ROOT / "deployment.json").read_text())["contractAddress"]

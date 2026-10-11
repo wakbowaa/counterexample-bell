@@ -16,3 +16,5 @@ This repository is intentionally contract-native: the complete public API is exp
 - Live challenge transaction: [`0x796d75...af0ac5`](https://explorer-studio.genlayer.com/tx/0x796d75dd0712e65682c93147de4efff9382f47c2d3dcfb808824dc6d00af0ac5)
 
 The finalized evidence record is in `evidence/live-run.json`. Run `python -m pytest -q` and `genvm-lint contracts/contract.py` to repeat local checks.
+
+To create a fresh public lifecycle, set `OWNER_PRIVATE_KEY` and `CHALLENGER_PRIVATE_KEY` to two funded StudioNet wallets, then run `python scripts/smoke.py`. The script waits for both writes to reach finalized `MAJORITY_AGREE`, asserts the final state is `BROKEN`, and writes the receipt to `evidence/live-run.json`.
